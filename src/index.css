@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Comforter+Brush&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-color {
+  @apply bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] text-white;
+}
+
+.center {
+  @apply flex justify-center items-center;
+}
+
+ul li {
+  @apply hover:text-teal-400 transition-all;
+}
+
+.image-wrapper {
+  @apply relative overflow-hidden;
+}
+
+.image-wrapper img {
+  @apply block w-full aspect-square object-cover object-center;
+}
+
+.image-wrapper .content {
+  @apply absolute p-[1rem] h-full flex justify-center items-center bg-[#ffffff66];
+}
+
+.image-wrapper img,
+.image-wrapper .content {
+  @apply ease-in-out duration-200;
+}
+
+.card div {
+  @apply flex justify-center items-center gap-10;
+}
+
+.footer__links {
+  @apply flex-1 w-full flex md:justify-end flex-wrap max-md:mt-10 gap-20;
+}
+
+.footer__link {
+  @apply flex flex-col gap-6 text-base min-w-[170px];
+}
+
+.footer__copyrights-link {
+  @apply flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10;
+}
+
+.detail-span span {
+  @apply pl-10;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-[#192841];
+}
