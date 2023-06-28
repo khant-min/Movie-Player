@@ -52,9 +52,15 @@ ul li {
   @apply pl-10;
 }
 
+.contact input,
+.contact textarea,
+.contact button {
+  @apply w-[80%] rounded-full m-auto px-4 py-3;
+}
+
 ::-webkit-scrollbar {
   @apply w-2;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-[#192841];
+  @apply bg-[#eaf5c9] rounded-full;
 }

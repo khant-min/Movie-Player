@@ -15,7 +15,7 @@ const MovieDetail = () => {
   if (movie === undefined) return <Navigate to="/notfound" />;
 
   return (
-    <Container className="center font-header flex-col bg-slate-200 shadow-inner w-[80%] mx-auto my-10 p-4">
+    <Container className="center font-header flex-col bg-[#eaf5c9] shadow-inner w-[80%] mx-auto my-10 p-4">
       <Heading className="font-bold text-3xl mb-10">
         {movie.original_title}
       </Heading>

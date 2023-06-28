@@ -7,6 +7,8 @@ const DataContext = createContext<DataContextProps | null>(null);
 export const DataProvider = ({ children }: { children: React.ReactNode }) => {
   const [movies, setMovies] = useState();
   const [page, setPage] = useState<number>(1);
+  const [search, setSearch] = useState<string>("");
+  const [dark, setDark] = useState<boolean>(true);
 
   useEffect(() => {
     (async () => {
@@ -20,7 +22,9 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
   }, [page]);
 
   return (
-    <DataContext.Provider value={{ movies, setPage }}>
+    <DataContext.Provider
+      value={{ movies, setPage, search, setSearch, dark, setDark }}
+    >
       {children}
     </DataContext.Provider>
   );

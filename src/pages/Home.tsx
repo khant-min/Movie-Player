@@ -4,22 +4,29 @@ import { useAuth } from "../context/DataContext";
 import { DataContextProps } from "../global.types";
 
 const Home = () => {
-  const { movies } = useAuth() as DataContextProps;
+  const { movies, search } = useAuth() as DataContextProps;
 
+  const Movies = ({ movies }: any) => {
+    const filtered = movies.filter(
+      (movie: any) =>
+        movie.title.toLowerCase().includes(search) ||
+        movie.overview.toLowerCase().includes(search)
+    );
+
+    return (
+      <Box>
+        <SimpleGrid columns={3} spacing={40}>
+          {filtered.map((movie: any) => (
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
+        </SimpleGrid>
+        <Paginate />
+      </Box>
+    );
+  };
   return (
     <Container className="p-10 ">
-      {movies !== undefined ? (
-        <Box>
-          <SimpleGrid columns={3} spacing={40}>
-            {movies.map((movie: any) => (
-              <MovieCard movie={movie} key={movie.id} />
-            ))}
-          </SimpleGrid>
-          <Paginate />
-        </Box>
-      ) : (
-        <Loading />
-      )}
+      {movies ? <Movies movies={movies} /> : <Loading />}
     </Container>
   );
 };
