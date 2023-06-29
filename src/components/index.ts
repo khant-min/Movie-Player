@@ -5,5 +5,19 @@ import Loading from "./Loading";
 import { Rating } from "./Rating";
 import MovieCard from "./MovieCard";
 import Paginate from "./Paginate";
+import Links from "./Links";
+import Menu from "./Menu";
+import Search from "./Search";
 
-export { Navbar, Layout, Footer, Loading, Rating, MovieCard, Paginate };
+export {
+  Navbar,
+  Layout,
+  Footer,
+  Loading,
+  Rating,
+  MovieCard,
+  Paginate,
+  Links,
+  Menu,
+  Search,
+};

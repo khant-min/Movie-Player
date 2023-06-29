@@ -6,13 +6,10 @@ import { IMG_URL } from "../constants";
 const MovieCard = ({ movie }: { movie: any }) => {
   const navigate = useNavigate();
 
-  const handleClick = (id: number) => {
-    navigate(`/detail/${id}`);
-  };
   return (
     <Card
       className="group cursor-pointer image-wrapper"
-      onClick={() => handleClick(movie.id)}
+      onClick={() => navigate(`/detail/${movie.id}`)}
     >
       <Box className="group-hover:blur-sm overflow-hidden rounded-3xl">
         <img
@@ -20,7 +17,11 @@ const MovieCard = ({ movie }: { movie: any }) => {
           className="group-hover:scale-110"
         />
         <Box className="absolute text-white bottom-0 p-8 flex flex-col gap-2">
-          <Heading className="text-4xl font-header">{movie.title}</Heading>
+          <Heading className="text-2xl sm:text-4xl font-header">
+            {movie.title.length > 20
+              ? `${movie.title.slice(0, 20)}...`
+              : movie.title}
+          </Heading>
           <span className="font-semibold">{movie.release_date}</span>
           <Stack direction="row">{Rating(movie.vote_average)}</Stack>
         </Box>
@@ -28,7 +29,7 @@ const MovieCard = ({ movie }: { movie: any }) => {
 
       <CardBody className="content text-2xl text-[#302b63] rounded-3xl font-header w-full opacity-0  group-hover:opacity-100 translate-x-[100%] group-hover:translate-x-0">
         <Stack className="card">
-          <Heading className="text-4xl text-center">
+          <Heading className="text-2xl sm:text-4xl text-center">
             {movie.original_title}
           </Heading>
           <div>

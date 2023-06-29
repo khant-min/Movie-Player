@@ -1,17 +1,12 @@
-import {
-  Box,
-  Button,
-  Heading,
-  Input,
-  Stack,
-  Textarea,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Button, Heading, Input, Stack, Textarea } from "@chakra-ui/react";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { toast } from "react-hot-toast";
+import { useAuth } from "../context/DataContext";
+import { DataContextProps } from "../global.types";
 
 const Contact = () => {
-  const toast = useToast();
+  const { darkTheme } = useAuth() as DataContextProps;
   const form = useRef<HTMLFormElement>(null!);
 
   const [name, setName] = useState<string>("");
@@ -23,28 +18,29 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_pmaeg8v",
-        "template_lmdy6iv",
+        import.meta.env.VITE_MAIL_SERVICE,
+        import.meta.env.VITE_MAIL_TEMPLATE,
         form.current,
-        "xbZzt6V4t69qmvYff"
+        import.meta.env.VITE_MAIL_PWD
       )
       .then(
         (result: any) => {
           console.log(result.text);
-          toast({
-            title: "Successfully Sent!",
-            status: "success",
-            isClosable: true,
-          });
+          toast.success("Message sent successfully!");
         },
-        (error: any) => {
-          console.log(error.text);
+        (err: any) => {
+          console.log(err.text);
+          toast.error(err.message);
         }
       );
   };
 
   return (
-    <Box className="center flex-col p-10 bg-[#eaf5c9] w-[50%] m-auto my-10 rounded-xl">
+    <Box
+      className={`animate center flex-col p-10 w-[90%]  md:w-[50%] m-auto my-10 rounded-xl ${
+        darkTheme ? "bg-[#302b63] text-white" : "bg-[#eaf5c9] "
+      }`}
+    >
       <form ref={form} onSubmit={sendEmail} className="w-full">
         <Heading className="font-header text-3xl text-center mb-10">
           Contact the Developer
@@ -81,7 +77,10 @@ const Contact = () => {
             }
           />
 
-          <Button type="submit" className="font-header bg-white pt-10">
+          <Button
+            type="submit"
+            className="font-header bg-white pt-10 text-black"
+          >
             Send
           </Button>
         </Stack>

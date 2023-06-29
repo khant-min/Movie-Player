@@ -14,8 +14,8 @@ const Home = () => {
     );
 
     return (
-      <Box>
-        <SimpleGrid columns={3} spacing={40}>
+      <Box className="min-h-[100%]">
+        <SimpleGrid columns={3} spacing={40} minChildWidth={300}>
           {filtered.map((movie: any) => (
             <MovieCard movie={movie} key={movie.id} />
           ))}

@@ -8,14 +8,16 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
   const [movies, setMovies] = useState();
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>("");
-  const [dark, setDark] = useState<boolean>(true);
+  const [darkTheme, setDarkTheme] = useState<boolean>(
+    JSON.parse(localStorage.getItem("isDark")!)
+  );
+  const [menu, setMenu] = useState<boolean>(false);
+  const [openSearch, setOpenSearch] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
       const { data } = await axios.get(
-        `?page=${page}&include_adult=true&include_video=true&api_key=${
-          import.meta.env.VITE_API_KEY
-        }`
+        `?page=${page}&api_key=${import.meta.env.VITE_API_KEY}`
       );
       setMovies(data.results);
     })();
@@ -23,7 +25,18 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <DataContext.Provider
-      value={{ movies, setPage, search, setSearch, dark, setDark }}
+      value={{
+        movies,
+        setPage,
+        search,
+        setSearch,
+        darkTheme,
+        setDarkTheme,
+        menu,
+        setMenu,
+        openSearch,
+        setOpenSearch,
+      }}
     >
       {children}
     </DataContext.Provider>
