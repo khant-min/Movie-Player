@@ -18,10 +18,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_pmaeg8v",
-        "template_lmdy6iv",
+        import.meta.env.VITE_MAIL_SERVICE,
+        import.meta.env.VITE_MAIL_TEMPLATE,
         form.current,
-        "xbZzt6V4t69qmvYff"
+        import.meta.env.VITE_MAIL_PWD
       )
       .then(
         (result: any) => {
