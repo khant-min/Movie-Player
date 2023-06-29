@@ -4,17 +4,24 @@ import { DataContextProps } from "../global.types";
 import { GrClose } from "react-icons/gr";
 
 const Menu = () => {
-  const { menu, setMenu } = useAuth() as DataContextProps;
+  const { menu, setMenu, darkTheme } = useAuth() as DataContextProps;
   return (
     <div
       className={`md:hidden fixed backdrop-blur-sm inset-0 z-10 ${
         !menu && "hidden"
       }`}
     >
-      <div className={`max-w-[90%] m-auto mt-8 p-6 rounded-3xl bg-[#eaf5c9]`}>
+      <div
+        className={`max-w-[90%] m-auto mt-8 p-6 rounded-3xl ${
+          darkTheme ? "bg-[#302b63] text-white" : "bg-[#eaf5c9]"
+        }`}
+      >
         <div className="flex justify-between items-center">
           <h2 className="text-sm ">Navigation</h2>
-          <button onClick={() => setMenu(false)}>
+          <button
+            onClick={() => setMenu(false)}
+            className={`${darkTheme ? "bg-white rounded-full p-2" : null}`}
+          >
             <GrClose />
           </button>
         </div>

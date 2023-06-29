@@ -3,7 +3,7 @@ import { DataContextProps } from "../global.types";
 import { GrClose } from "react-icons/gr";
 
 const Search = () => {
-  const { openSearch, setOpenSearch, search, setSearch } =
+  const { openSearch, setOpenSearch, search, setSearch, darkTheme } =
     useAuth() as DataContextProps;
   return (
     <div
@@ -11,10 +11,17 @@ const Search = () => {
         !openSearch && "hidden"
       }`}
     >
-      <div className={`max-w-[90%] m-auto mt-8 p-6 rounded-3xl bg-[#eaf5c9]`}>
+      <div
+        className={`max-w-[90%] m-auto mt-8 p-6 rounded-3xl ${
+          darkTheme ? "bg-[#302b63] text-white" : "bg-[#eaf5c9]"
+        }`}
+      >
         <div className="flex justify-between items-center">
           <h2 className="text-sm ">Navigation</h2>
-          <button onClick={() => setOpenSearch(false)}>
+          <button
+            onClick={() => setOpenSearch(false)}
+            className={`${darkTheme ? "bg-white rounded-full p-2" : null}`}
+          >
             <GrClose />
           </button>
         </div>
@@ -30,7 +37,7 @@ const Search = () => {
           />
         </nav>
         <button
-          className="bg-white rounded-md px-4 py-2 mt-4"
+          className="bg-white text-black rounded-md px-4 py-2 mt-4"
           onClick={() => setOpenSearch(false)}
         >
           Serach
