@@ -4,7 +4,7 @@ import { useAuth } from "../context/DataContext";
 import { DataContextProps } from "../global.types";
 
 const Home = () => {
-  const { movies, search } = useAuth() as DataContextProps;
+  const { movies, search, darkTheme } = useAuth() as DataContextProps;
 
   const Movies = ({ movies }: any) => {
     const filtered = movies.filter(
@@ -25,7 +25,7 @@ const Home = () => {
     );
   };
   return (
-    <Container className="p-10 ">
+    <Container className={`p-10 my-2 ${darkTheme ? "bg-[#302b63]" : null}`}>
       {movies ? <Movies movies={movies} /> : <Loading />}
     </Container>
   );

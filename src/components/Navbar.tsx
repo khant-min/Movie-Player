@@ -7,6 +7,7 @@ import { BsSun } from "react-icons/bs";
 import { useAuth } from "../context/DataContext";
 import { DataContextProps } from "../global.types";
 import { Links, Menu, Search } from ".";
+import { motion, spring } from "framer-motion";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -14,7 +15,10 @@ const Navbar = () => {
     useAuth() as DataContextProps;
 
   return (
-    <Box
+    <motion.div
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ delay: 0.2 }}
       className={`animate sticky top-0 z-10 flex justify-between p-4 font-brand ${
         darkTheme ? "bg-[#302b63] text-white" : "bg-[#eaf5c9] text-black "
       }`}
@@ -36,7 +40,7 @@ const Navbar = () => {
       </Box>
 
       <Box className="flex gap-3">
-        <div className="flex items-center sm:relative">
+        <div className="flex items-center sm:relative text-black">
           <label
             htmlFor="search"
             className="sm:absolute left-2 top-2.5 text-3xl sm:text-2xl cursor-pointer"
@@ -70,7 +74,7 @@ const Navbar = () => {
       </Box>
       <Menu />
       <Search />
-    </Box>
+    </motion.div>
   );
 };
 

@@ -17,6 +17,7 @@ const Paginate = () => {
         count={20}
         variant="outlined"
         shape="rounded"
+        color="primary"
         size={mobile ? "small" : "large"}
         onClick={(e) => setPage((e.target as any).textContent)}
       />

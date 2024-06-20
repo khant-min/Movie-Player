@@ -45,7 +45,7 @@ const Contact = () => {
         <Heading className="font-header text-3xl text-center mb-10">
           Contact the Developer
         </Heading>
-        <Stack className="w-full contact">
+        <Stack className="w-full contact text-black">
           <Input
             placeholder="What's your name"
             required

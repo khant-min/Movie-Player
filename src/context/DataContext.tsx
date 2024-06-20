@@ -17,9 +17,10 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     (async () => {
       const { data } = await axios.get(
-        `?page=${page}&api_key=${import.meta.env.VITE_API_KEY}`
+        `/3/discover/movie?page=${page}&api_key=${import.meta.env.VITE_API_KEY}`
       );
       setMovies(data.results);
+      console.log("data: ", data);
     })();
   }, [page]);
 
