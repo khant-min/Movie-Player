@@ -7,7 +7,7 @@ import { BsSun } from "react-icons/bs";
 import { useAuth } from "../context/DataContext";
 import { DataContextProps } from "../global.types";
 import { Links, Menu, Search } from ".";
-import { motion, spring } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const navigate = useNavigate();
